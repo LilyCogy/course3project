@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2 d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-success"
+        style="margin: 100px"
+        (click)="prevFunction()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-arrow-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="col-2" *ngFor="let booking of bookings">
+      <div class="card">
+        <div class="card-body">
+          <div>From: {{ booking.fromlocation }}</div>
+          <div><br />To: {{ booking.tolocation }}</div>
+          <div><br />Type of Cab: {{ booking.typeofcab }}</div>
+          <div><br />Amount:{{ booking.amount }}</div>
+          <div><br />Number of seats:{{ booking.numberofseats }}</div>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="selectBookingFunction(booking)"
+          >
+            Select
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-success"
+        style="margin: 100px"
+        (click)="nextFunction()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-arrow-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="cname">Name</label>
+        <input
+          class="form-control"
+          id="cname"
+          placeholder="Name"
+          value="{{ selectedBooking.cname }}"
+          (change)="onCustomerNameChange($event)"
+        />
+      </div>
+      <div class="form-group">
+        <label for="fromAddress">From</label>
+        <input
+          class="form-control"
+          id="fromAddress"
+          placeholder="From"
+          value="{{ selectedBooking.source }}"
+          (change)="onFromAddressChange($event)"
+        />
+      </div>
+      <div class="form-group">
+        <label for="toAddress">To</label>
+        <input
+          class="form-control"
+          id="toAddress"
+          placeholder="To"
+          value="{{ selectedBooking.destination }}"
+          (change)="onToAddressChange($event)"
+        />
+      </div>
+      <div class="form-group">
+        <label for="typeOfCab">Type of Cap</label>
+        <input
+          class="form-control"
+          id="typeOfCab"
+          placeholder="Type of Cab"
+          value="{{ selectedBooking.typeofcab }}"
+          (change)="onTypeOfCabChange($event)"
+        />
+      </div>
+      <div class="form-group">
+        <label for="numOfSeats">Number of seats</label>
+        <input
+          class="form-control"
+          id="numOfSeats"
+          placeholder="Number of seats"
+          value="{{ selectedBooking.numberofseats }}"
+          (change)="onNumberOfSeats($event)"
+        />
+      </div>
+      <br />
+      <button class="btn btn-primary" (click)="onBook()">Book</button>
+    </div>
+    <div class="col-6 d-flex justify-content-center">
+      {{ onBookResponse }}
+    </div>
+  </div>
+</div>

@@ -19,9 +19,11 @@ public class CabBookingApplication {
 		SpringApplication.run(CabBookingApplication.class, args);
 		System.err.println("Cab Book micro service upon on port number 8282");
 	}
+	
+
+//	@LoadBalanced		// we can call micro service by name rather than physical ip address and port. 
 
 	@Bean
-	@LoadBalanced		// we can call micro service by name rather than physical ip address and port. 
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}

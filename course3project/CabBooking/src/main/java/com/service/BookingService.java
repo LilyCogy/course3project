@@ -30,10 +30,10 @@ public class BookingService {
 //restTemplate.getForObject("http://localhost:8282/cabfare/findCabFare/"+tolocation+"/"+fromlocation+"/"+typeofcab+"/"+numberOfSeats, Float.class);
 
 float amount = 
-restTemplate.getForObject("http://CABFARESERVICE/cabfare/findCabFare/"+tolocation+"/"+fromlocation+"/"+typeofcab+"/"+numberOfSeats, Float.class);		
+restTemplate.getForObject("http://localhost:8282/cabfare/findCabFare/"+tolocation+"/"+fromlocation+"/"+typeofcab+"/"+numberOfSeats, Float.class);		
 		
 		if(amount==-1) {
-			return "No Cab Avaiable as of now, So cab didn't book";
+			return "No Cab Available as of now, So cab didn't book";
 		}else {
 			bc.setAmount(amount);
 			bc.setBookingtime(LocalDateTime.now());
